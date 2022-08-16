@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import axios from 'axios';
+import { useRouter } from "next/router"
 
 export default function register() {
   const [email, setEmail] = useState("");
@@ -8,6 +9,7 @@ export default function register() {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [phone, setPhone] = useState("");
+  const router = useRouter()
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -23,9 +25,13 @@ export default function register() {
     })
       .then(function (response) {
         console.log(response);
+        if (response.statusText == "Created") {
+          router.push('/login')
+        }
       })
       .catch(function (error) {
         console.log(error);
+        alert(error.message)
       });
   };
 

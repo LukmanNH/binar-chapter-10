@@ -1,12 +1,32 @@
 import Link from "next/link";
 import { useState } from "react";
+import axios from 'axios';
+import { useRouter } from "next/router"
 
 export default function login() {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter()
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
+
+    if (!username || !password) return alert("username or password is empty");
+
+    axios.post('http://localhost:8800/api/auth/signin', {
+      username: username,
+      password: password
+    })
+      .then(function (response) {
+        console.log(response);
+        if (response.statusText == "OK") {
+          router.push('/')
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+        alert(error.response.data.message)
+      });
   };
 
   return (
@@ -32,12 +52,12 @@ export default function login() {
                 <form onSubmit={handleLogin}>
                   <div className="pt-6 mb-4">
                     <input
-                      type="email"
-                      name="email"
-                      placeholder="Masukkan Email"
-                      value={email}
+                      type="username"
+                      name="username"
+                      placeholder="Masukkan Username"
+                      value={username}
                       onChange={(e) => {
-                        setEmail(e.target.value);
+                        setUsername(e.target.value);
                       }}
                       className="w-[20.375rem] h-12 p-[0.875rem] rounded-[0.25rem] text-sm"
                     />
