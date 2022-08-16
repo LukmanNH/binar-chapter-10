@@ -62,11 +62,11 @@ export default function login() {
                   </button>
                 </form>
                 <div className="flex items-center mt-[2.125rem]">
-                  <div class="flex-grow border-t border-gray-400"></div>
+                  <div className="flex-grow border-t border-gray-400"></div>
                   <p className="text-xs text-[#D0D0D0] mx-4">
                     atau masuk dengan
                   </p>
-                  <div class="flex-grow border-t border-gray-400"></div>
+                  <div className="flex-grow border-t border-gray-400"></div>
                 </div>
                 <div className="mt-[2.25rem] w-[20.375rem] h-[2.875rem] text-white py-3 rounded-[0.5rem] flex justify-center border border-gray-300 cursor-pointer">
                   <img src="google-icon.svg" alt="google-icon" />
