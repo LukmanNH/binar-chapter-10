@@ -19,7 +19,7 @@ const UserSchema = new mongoose.Schema(
     password: {
       type: String,
     },
-    score: [{ gameName: String, point: Number }],
+    score: [{ userId: String, gameName: String, point: Number }],
     img: {
       type: String,
     },

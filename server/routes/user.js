@@ -1,6 +1,5 @@
 import express from "express";
 import { getUser, updateProfile } from "../controllers/userController.js";
-import { verifyToken } from "../verifyToken.js";
 
 const router = express.Router();
 
@@ -8,6 +7,6 @@ const router = express.Router();
 router.get("/", getUser);
 
 // UPDATE USER
-router.put("/:id", verifyToken, updateProfile);
+router.put("/:id", updateProfile);
 
 export default router;

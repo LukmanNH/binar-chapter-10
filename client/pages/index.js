@@ -1,6 +1,6 @@
+import Link from "next/link";
 import ButtonPrimary from "../components/ButtonPrimary";
 import NavBar from "../components/NavBar";
-import Link from "next/link";
 
 export default function Home() {
   return (

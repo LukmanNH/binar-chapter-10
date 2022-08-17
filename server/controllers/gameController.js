@@ -26,3 +26,14 @@ export const inputGames = async (req, res, next) => {
     });
   }
 };
+
+export const updatePlayedUser = async (req, res, next) => {
+  try {
+    const updatedGame = await Game.findByIdAndUpdate(req.params.id, {
+      $push: { userPlayed: req.body.userPlayed },
+    });
+    res.status(200).json(updatedGame);
+  } catch (error) {
+    next(error);
+  }
+};
